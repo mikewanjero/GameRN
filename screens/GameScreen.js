@@ -5,6 +5,7 @@ import NumberContainer from "../components/Game/NumberContainer";
 import MainButton from "../components/UI/MainButton";
 import Card from "../components/UI/card";
 import Instructions from "../components/UI/Instructions";
+import { AntDesign } from "@expo/vector-icons";
 
 function generateRandomBetween(min, max, exclude) {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -60,14 +61,20 @@ export default function GameScreen({ userNumber, onGameOver }) {
       {/* Actual CPU Guess */}
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
-        <Instructions>Higher or Lower?</Instructions>
-        <View>
-          <MainButton onButtonPress={nextGuessHandler.bind(this, "higher")}>
-            +
-          </MainButton>
-          <MainButton onButtonPress={nextGuessHandler.bind(this, "lower")}>
-            -
-          </MainButton>
+        <Instructions style={Styles.instructionText}>
+          Higher or Lower?
+        </Instructions>
+        <View style={Styles.buttonsPosition}>
+          <View style={Styles.buttonPosition}>
+            <MainButton onButtonPress={nextGuessHandler.bind(this, "lower")}>
+              <AntDesign name="minuscircleo" size={20} color="white" />
+            </MainButton>
+          </View>
+          <View style={Styles.buttonPosition}>
+            <MainButton onButtonPress={nextGuessHandler.bind(this, "higher")}>
+              <AntDesign name="pluscircleo" size={20} color="white" />
+            </MainButton>
+          </View>
         </View>
       </Card>
       {/* <View>LOG ROUNDS</View> */}
@@ -79,5 +86,14 @@ const Styles = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 40,
+  },
+  instructionText: {
+    marginBottom: 12,
+  },
+  buttonsPosition: {
+    flexDirection: "row",
+  },
+  buttonPosition: {
+    flex: 1,
   },
 });

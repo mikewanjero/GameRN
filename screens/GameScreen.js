@@ -6,7 +6,7 @@ import MainButton from "../components/UI/MainButton";
 import Card from "../components/UI/card";
 import Instructions from "../components/UI/Instructions";
 import { AntDesign } from "@expo/vector-icons";
-import { GuessLogItem } from "../components/Game/GuessLogItem";
+import GuessLogItem from "../components/Game/GuessLogItem";
 
 function generateRandomBetween(min, max, exclude) {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
